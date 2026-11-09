@@ -294,3 +294,11 @@ code {
     border-right-color: var(--border);
   }
 }
+
+#scene-canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  touch-action: none;
+  cursor: grab; /* Définir le curseur par défaut sur le canvas */
+}

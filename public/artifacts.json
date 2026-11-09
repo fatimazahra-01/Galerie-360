@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "statue-tableau",
+    "title": "Tableau Homme",
+    "description": "Tableau au fond du musée",
+    "hotspotPosition": [-5, 1, -15],
+    "cameraTarget": [-5, 1, -15]
+  },
+  {
+    "id": "statue-assise",
+    "title": "Statue assise",
+    "description": "Sculpture en bois au centre",
+    "hotspotPosition": [0, -1, -8],
+    "cameraTarget": [0, -1, -8]
+  },
+  {
+    "id": "statue-chien",
+    "title": "Sculpture Chien",
+    "description": "Sculpture sur la droite",
+    "hotspotPosition": [10, -1, -15],
+    "cameraTarget": [10, -1, -15]
+  }
+]
