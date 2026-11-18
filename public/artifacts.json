@@ -1,1 +1,67 @@
-[]
+[
+  {
+    "id": "momie-01",
+    "title": "Momie",
+    "model": "/models/momie.glb",
+    "position": [0, 0, -8],
+    "rotation": [0, 0, 0],
+    "scale": 1,
+    "pedestalHeight": 0.5,
+    "pedestalSize": 1.1,
+    "vitrine": true,
+    "audio": "/audio/momie.mp3",
+    "text": { "period": "", "story": "" }
+  },
+  {
+    "id": "vase-01",
+    "title": "Vase grec",
+    "model": "/models/vase.glb",
+    "position": [-5, 0, -3],
+    "rotation": [0, 45, 0],
+    "scale": 1,
+    "pedestalHeight": 1,
+    "pedestalSize": 0.9,
+    "vitrine": true,
+    "audio": "/audio/vase.mp3",
+    "text": { "period": "", "story": "" }
+  },
+  {
+    "id": "masque-01",
+    "title": "Masque",
+    "model": "/models/masque.glb",
+    "position": [5, 0, -3],
+    "rotation": [0, -45, 0],
+    "scale": 1,
+    "pedestalHeight": 1,
+    "pedestalSize": 0.9,
+    "vitrine": true,
+    "audio": "/audio/masque.mp3",
+    "text": { "period": "", "story": "" }
+  },
+  {
+    "id": "epee-01",
+    "title": "Épée",
+    "model": "/models/epee.glb",
+    "position": [-5, 0, 3],
+    "rotation": [0, 90, 0],
+    "scale": 1,
+    "pedestalHeight": 1,
+    "pedestalSize": 0.9,
+    "vitrine": true,
+    "audio": "/audio/epee.mp3",
+    "text": { "period": "", "story": "" }
+  },
+  {
+    "id": "sarcophage-01",
+    "title": "Sarcophage",
+    "model": "/models/sarcophage.glb",
+    "position": [5, 0, 3],
+    "rotation": [0, -90, 0],
+    "scale": 1,
+    "pedestalHeight": 0.4,
+    "pedestalSize": 1.2,
+    "vitrine": false,
+    "audio": "/audio/sarcophage.mp3",
+    "text": { "period": "", "story": "" }
+  }
+]
