@@ -10,7 +10,18 @@
     "pedestalSize": 1.1,
     "vitrine": true,
     "audio": "/audio/momie.mp3",
-    "text": { "period": "", "story": "" }
+    "text": { "period": "", "story": "" },
+    "targetSize": 1.3,
+    "yOffset": 0.42,
+    "gag": "mummy",
+    "animations": {
+      "idle": "min_carl_mm_idle_001",
+      "wave": "mc_005_jerry_mainmenu_welcome_with_banana",
+      "dance": "min_mid_game_crash_butt_on_fire_001"
+    },
+    "proximityTrigger": 3,
+    "startleDistance": 1.7,
+    "speech": ["Bello !", "Tu m'as réveillé..."]
   },
   {
     "id": "vase-01",
@@ -23,7 +34,11 @@
     "pedestalSize": 0.9,
     "vitrine": true,
     "audio": "/audio/vase.mp3",
-    "text": { "period": "", "story": "" }
+    "text": { "period": "", "story": "" },
+    "targetSize": 0.7,
+    "gag": "vaseBoo",
+    "proximityTrigger": 2.5,
+    "speech": ["BOO !"]
   },
   {
     "id": "masque-01",
@@ -36,7 +51,12 @@
     "pedestalSize": 0.9,
     "vitrine": true,
     "audio": "/audio/masque.mp3",
-    "text": { "period": "", "story": "" }
+    "text": { "period": "", "story": "" },
+    "targetSize": 0.5,
+    "gag": "maskFollow",
+    "proximityTrigger": 6,
+    "maxYaw": 60,
+    "faceOffset": 0
   },
   {
     "id": "epee-01",
@@ -49,7 +69,8 @@
     "pedestalSize": 0.9,
     "vitrine": true,
     "audio": "/audio/epee.mp3",
-    "text": { "period": "", "story": "" }
+    "text": { "period": "", "story": "" },
+    "targetSize": 0.9
   },
   {
     "id": "sarcophage-01",
@@ -62,6 +83,7 @@
     "pedestalSize": 1.2,
     "vitrine": false,
     "audio": "/audio/sarcophage.mp3",
-    "text": { "period": "", "story": "" }
+    "text": { "period": "", "story": "" },
+    "targetSize": 1.9
   }
 ]

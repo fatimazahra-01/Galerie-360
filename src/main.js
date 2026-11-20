@@ -7,6 +7,10 @@ import { ArtifactPlacer } from './scene/ArtifactPlacer.js';
 import { Interaction } from './scene/Interaction.js';
 import { CameraTransition } from './scene/CameraTransition.js';
 import { VRManager } from './scene/VRManager.js';
+import { ActorManager } from './objects/ActorManager.js';
+import { ArtifactViewer } from './viewer/ArtifactViewer.js';
+import { preloadArtifact } from './viewer/loadArtifact.js';
+
 const canvas = document.getElementById('scene-canvas');
 
 // Loader (HTML/CSS par C)
@@ -27,11 +31,17 @@ const navigation = new Navigation(sm.camera, canvas, room);
 const placer = new ArtifactPlacer(sm.scene, room, loadingManager);
 const transition = new CameraTransition(sm.camera, navigation);
 const vr = new VRManager(sm, navigation, room);
+
+const actors = new ActorManager(sm.scene, sm.camera);
+new ArtifactViewer();
+window.actors = actors; // debug : à retirer avant la livraison
+
 const state = { inArtifact: false };
 
 // Point d'intégration avec B et C
 function selectArtifact(artifact) {
   if (state.inArtifact) return;
+  preloadArtifact(artifact); // le modèle charge pendant le zoom caméra (1,6 s)
   state.inArtifact = true;
   navigation.unlock(); // libère la souris pour le panneau de C
 
@@ -52,6 +62,7 @@ async function init() {
     const artifacts = await response.json();
     await placer.load(artifacts);
     interaction.refreshTargets();
+    actors.init(placer);
   } catch (error) {
     console.error('Erreur de chargement des artefacts :', error);
   }
@@ -77,6 +88,7 @@ sm.renderer.setAnimationLoop(() => {
 
   // Mode VR : téléportation seulement
   if (sm.renderer.xr.isPresenting) {
+    actors.update(dt);
     vr.update();
     sm.renderer.render(sm.scene, sm.camera);
     return;
@@ -84,20 +96,20 @@ sm.renderer.setAnimationLoop(() => {
 
   if (sm.pauseRender) return;
 
+  actors.update(dt);
   navigation.update(dt);
   interaction.enabled = navigation.isLocked && !state.inArtifact;
   interaction.update();
 
   sm.renderer.render(sm.scene, sm.camera);
 });
+
 window.addEventListener('artifact:close', () => {
   sm.pauseRender = false; // on reprend le rendu de la salle
   transition.zoomBack(() => {
     state.inArtifact = false; // le visiteur recliquera pour reprendre la main
   });
 });
-
-
 
 // --- TEST TEMPORAIRE : à supprimer à l'intégration ---
 window.addEventListener('artifact:select', (e) => {

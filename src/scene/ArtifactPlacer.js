@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { createSpot, MAX_SHADOW_LIGHTS } from './Lights.js';
+import { normalizeModel } from '../objects/normalizeModel.js';
 
 export class ArtifactPlacer {
   constructor(scene, room, loadingManager) {
@@ -13,7 +14,7 @@ export class ArtifactPlacer {
     this.loader = new GLTFLoader(loadingManager);
     this.loader.setDRACOLoader(draco);
 
-    this.entries = new Map(); // id -> { artifact, root, materials, focus }
+    this.entries = new Map(); // id -> { artifact, root, model, animations, materials, focus }
     this.roots = [];          // groupes racines (pour le raycast)
   }
 
@@ -40,19 +41,30 @@ export class ArtifactPlacer {
 
     // 3. Modèle GLB (placeholder si introuvable)
     let model;
+    let animations = [];
+    let isPlaceholder = false;
     try {
       const gltf = await this.loader.loadAsync(artifact.model);
       model = gltf.scene;
+      animations = gltf.animations ?? [];
     } catch (error) {
       console.warn(`[${artifact.id}] modèle introuvable (${artifact.model}) → placeholder`);
       model = this._placeholder();
+      isPlaceholder = true;
     }
+
+    if (!isPlaceholder && artifact.targetSize) {
+      normalizeModel(model, artifact.targetSize, artifact.yOffset ?? 0);
+    }
+
     model.traverse((o) => {
       if (o.isMesh) {
         o.castShadow = true;
         o.receiveShadow = true;
+        if (o.isSkinnedMesh) o.frustumCulled = false;
       }
     });
+
     root.add(model);
     this.scene.add(root);
     root.updateMatrixWorld(true);
@@ -65,7 +77,7 @@ export class ArtifactPlacer {
     // 5. Vitrine ajustée à l'objet
     if (artifact.vitrine !== false) {
       const width = Math.max(pedestalSize, size.x + 0.2, size.z + 0.2);
-      this.room.addVitrine(x, y + topY, z, width, size.y + 0.2);
+      this.room.addVitrine(x, y + topY, z, width, size.y + 0.35);
     }
 
     // 6. Spot dédié (ombres seulement sur les MAX_SHADOW_LIGHTS premiers)
@@ -74,6 +86,8 @@ export class ArtifactPlacer {
     this.entries.set(artifact.id, {
       artifact,
       root,
+      model,
+      animations,
       materials: this._collectMaterials(root),
       focus: { center, size: Math.max(size.x, size.y, size.z) }
     });
