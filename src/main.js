@@ -10,6 +10,7 @@ import { VRManager } from './scene/VRManager.js';
 import { ActorManager } from './objects/ActorManager.js';
 import { ArtifactViewer } from './viewer/ArtifactViewer.js';
 import { preloadArtifact } from './viewer/loadArtifact.js';
+import { initUI } from './ui/ui.js';
 
 const canvas = document.getElementById('scene-canvas');
 
@@ -23,6 +24,7 @@ loadingManager.onProgress = (url, loaded, total) => {
 loadingManager.onLoad = hideLoader;
 
 const sm = new SceneManager(canvas);
+initUI({ camera: sm.camera }); // UI + audio (membre C)
 const room = new Room();
 sm.scene.add(room.group);
 addBaseLights(sm.scene);
@@ -34,7 +36,7 @@ const vr = new VRManager(sm, navigation, room);
 
 const actors = new ActorManager(sm.scene, sm.camera);
 new ArtifactViewer();
-window.actors = actors; // debug : à retirer avant la livraison
+
 
 const state = { inArtifact: false };
 
@@ -110,12 +112,3 @@ window.addEventListener('artifact:close', () => {
     state.inArtifact = false; // le visiteur recliquera pour reprendre la main
   });
 });
-
-// --- TEST TEMPORAIRE : à supprimer à l'intégration ---
-window.addEventListener('artifact:select', (e) => {
-  console.log('artifact:select reçu :', e.detail);
-});
-window.addEventListener('keydown', (e) => {
-  if (e.code === 'KeyX') window.dispatchEvent(new Event('artifact:close'));
-});
-// ------------------------------------------------------

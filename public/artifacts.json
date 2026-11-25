@@ -1,16 +1,46 @@
 [
   {
     "id": "momie-01",
-    "title": "Momie",
+    "title": "La Momie Bavarde",
     "model": "/models/momie.glb",
-    "position": [0, 0, -8],
-    "rotation": [0, 0, 0],
+    "position": [
+      0,
+      0,
+      -8
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
     "scale": 1,
     "pedestalHeight": 0.5,
     "pedestalSize": 1.1,
     "vitrine": true,
     "audio": "/audio/momie.mp3",
-    "text": { "period": "", "story": "" },
+    "hoverAudio": "/audio/momie-hello.mp3",
+    "text": {
+      "period": "Égypte ancienne · édition rigolote",
+      "story": "Pendant près de 3 000 ans, les Égyptiens ont pratiqué la momification pour conserver les corps. Le procédé durait environ 70 jours : le corps était séché avec du natron, un sel naturel, puis enveloppé de bandelettes de lin.\n\nCelle-ci a l'air d'avoir très bien dormi… jusqu'à ce que tu t'approches. Ne la regarde pas de trop près, elle est très sensible. Astuce : clique trois fois sur elle, elle adore danser.",
+      "facts": [
+        [
+          "Origine",
+          "Égypte ancienne"
+        ],
+        [
+          "Technique",
+          "Séchage au natron, bandelettes de lin"
+        ],
+        [
+          "Durée du procédé",
+          "Environ 70 jours"
+        ],
+        [
+          "Particularité",
+          "Danse sur demande"
+        ]
+      ]
+    },
     "targetSize": 1.3,
     "yOffset": 0.42,
     "gag": "mummy",
@@ -21,37 +51,94 @@
     },
     "proximityTrigger": 3,
     "startleDistance": 1.7,
-    "speech": ["Bello !", "Tu m'as réveillé..."]
+    "speech": [
+      "Bello !",
+      "Tu m'as réveillé..."
+    ]
   },
   {
     "id": "vase-01",
-    "title": "Vase grec",
+    "title": "Hydrie d'apothicaire",
     "model": "/models/vase.glb",
-    "position": [-5, 0, -3],
-    "rotation": [0, 45, 0],
+    "position": [
+      -5,
+      0,
+      -3
+    ],
+    "rotation": [
+      0,
+      45,
+      0
+    ],
     "scale": 1,
     "pedestalHeight": 1,
     "pedestalSize": 0.9,
     "vitrine": true,
     "audio": "/audio/vase.mp3",
-    "text": { "period": "", "story": "" },
+    "hoverAudio": "/audio/vase-hover.mp3",
+    "text": {
+      "period": "Grèce antique · réinterprétée par les apothicaires",
+      "story": "L'hydrie est à l'origine une cruche grecque à trois anses, utilisée pour puiser et transporter l'eau. Ici, cette forme classique a été reprise pour un vase d'apothicaire : un pot destiné à conserver les remèdes et préparations des pharmaciens d'autrefois.\n\nIl a l'air très calme. Approche-toi pour voir.",
+      "facts": [
+        [
+          "Forme",
+          "Hydrie à trois anses"
+        ],
+        [
+          "Usage",
+          "Conservation de remèdes"
+        ],
+        [
+          "Matière",
+          "Céramique"
+        ]
+      ]
+    },
     "targetSize": 0.7,
     "gag": "vaseBoo",
     "proximityTrigger": 2.5,
-    "speech": ["BOO !"]
+    "speech": [
+      "BOO !"
+    ]
   },
   {
     "id": "masque-01",
-    "title": "Masque",
+    "title": "Masque n'tomo",
     "model": "/models/masque.glb",
-    "position": [5, 0, -3],
-    "rotation": [0, -45, 0],
+    "position": [
+      5,
+      0,
+      -3
+    ],
+    "rotation": [
+      0,
+      -45,
+      0
+    ],
     "scale": 1,
     "pedestalHeight": 1,
     "pedestalSize": 0.9,
     "vitrine": true,
     "audio": "/audio/masque.mp3",
-    "text": { "period": "", "story": "" },
+    "hoverAudio": "/audio/masque-hover.mp3",
+    "text": {
+      "period": "Mali · société d'initiation n'tomo",
+      "story": "Le n'tomo est une société d'initiation du peuple bamana (bambara), au Mali. Ses masques, souvent surmontés de cornes, apparaissent lors de cérémonies liées au passage des jeunes garçons à l'âge adulte.\n\nAttention : où que tu ailles dans la salle, ses yeux semblent te suivre.",
+      "facts": [
+        [
+          "Peuple",
+          "Bamana (Mali)"
+        ],
+        [
+          "Fonction",
+          "Cérémonies d'initiation"
+        ],
+        [
+          "Matière",
+          "Bois sculpté"
+        ]
+      ]
+    },
     "targetSize": 0.5,
     "gag": "maskFollow",
     "proximityTrigger": 6,
@@ -60,30 +147,82 @@
   },
   {
     "id": "epee-01",
-    "title": "Épée",
+    "title": "Sabre d'officier de dragons",
     "model": "/models/epee.glb",
-    "position": [-5, 0, 3],
-    "rotation": [0, 90, 0],
+    "position": [
+      -5,
+      0,
+      3
+    ],
+    "rotation": [
+      0,
+      90,
+      0
+    ],
     "scale": 1,
     "pedestalHeight": 1,
     "pedestalSize": 0.9,
     "vitrine": true,
     "audio": "/audio/epee.mp3",
-    "text": { "period": "", "story": "" },
+    "hoverAudio": "/audio/epee-hover.mp3",
+    "text": {
+      "period": "Modèle 1881/1909 · cavalerie",
+      "story": "Les dragons étaient à l'origine des soldats montés qui pouvaient aussi combattre à pied. Pour un officier, le sabre est autant un insigne de grade qu'une arme.\n\nCelui-ci, de modèle 1881/1909, a été remis comme récompense. On le regarde, on ne le touche pas.",
+      "facts": [
+        [
+          "Type",
+          "Sabre d'officier"
+        ],
+        [
+          "Modèle",
+          "1881/1909"
+        ],
+        [
+          "Distinction",
+          "Remis en récompense"
+        ]
+      ]
+    },
     "targetSize": 0.9
   },
   {
     "id": "sarcophage-01",
-    "title": "Sarcophage",
+    "title": "Cercueil d'el-Hiba",
     "model": "/models/sarcophage.glb",
-    "position": [5, 0, 3],
-    "rotation": [0, -90, 0],
+    "position": [
+      5,
+      0,
+      3
+    ],
+    "rotation": [
+      0,
+      -90,
+      0
+    ],
     "scale": 1,
     "pedestalHeight": 0.4,
     "pedestalSize": 1.2,
     "vitrine": false,
     "audio": "/audio/sarcophage.mp3",
-    "text": { "period": "", "story": "" },
+    "hoverAudio": "/audio/sarcophage-hover.mp3",
+    "text": {
+      "period": "Égypte ancienne · Moyenne-Égypte",
+      "story": "Pour les Égyptiens, le cercueil était bien plus qu'une boîte : il protégeait le défunt et l'aidait dans son voyage vers l'au-delà. Il était souvent décoré de figures divines, de hiéroglyphes et de formules protectrices.\n\nCelui-ci provient d'el-Hiba, un site archéologique de Moyenne-Égypte.",
+      "facts": [
+        [
+          "Origine",
+          "el-Hiba, Égypte"
+        ],
+        [
+          "Fonction",
+          "Protéger le défunt"
+        ],
+        [
+          "Matière",
+          "Bois peint"
+        ]
+      ]
+    },
     "targetSize": 1.9
   }
 ]

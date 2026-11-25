@@ -34,6 +34,7 @@ export class Interaction {
     if (id === this.hoveredId) return;
     if (this.hoveredId) this.placer.setHighlight(this.hoveredId, false);
     this.hoveredId = id;
+    window.dispatchEvent(new CustomEvent('artifact:hover', { detail: id }));
     if (id) this.placer.setHighlight(id, true);
     this.crosshair?.classList.toggle('active', !!id);
   }
