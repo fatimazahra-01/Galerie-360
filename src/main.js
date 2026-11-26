@@ -6,7 +6,6 @@ import { Navigation } from './scene/Navigation.js';
 import { ArtifactPlacer } from './scene/ArtifactPlacer.js';
 import { Interaction } from './scene/Interaction.js';
 import { CameraTransition } from './scene/CameraTransition.js';
-import { VRManager } from './scene/VRManager.js';
 import { ActorManager } from './objects/ActorManager.js';
 import { ArtifactViewer } from './viewer/ArtifactViewer.js';
 import { preloadArtifact } from './viewer/loadArtifact.js';
@@ -32,7 +31,7 @@ addBaseLights(sm.scene);
 const navigation = new Navigation(sm.camera, canvas, room);
 const placer = new ArtifactPlacer(sm.scene, room, loadingManager);
 const transition = new CameraTransition(sm.camera, navigation);
-const vr = new VRManager(sm, navigation, room);
+
 
 const actors = new ActorManager(sm.scene, sm.camera);
 new ArtifactViewer();
@@ -88,13 +87,7 @@ const clock = new THREE.Clock();
 sm.renderer.setAnimationLoop(() => {
   const dt = Math.min(clock.getDelta(), 0.05);
 
-  // Mode VR : téléportation seulement
-  if (sm.renderer.xr.isPresenting) {
-    actors.update(dt);
-    vr.update();
-    sm.renderer.render(sm.scene, sm.camera);
-    return;
-  }
+
 
   if (sm.pauseRender) return;
 
